@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import { Link } from 'react-router-dom';
 
 import InputWrapper from '../../common/components/forms/InputWrapper';
 
@@ -54,10 +55,11 @@ class Register extends Component {
       </InputWrapper>
       <div>
         <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
-          Sign Up
+          REGISTER
         </button>
       </div>
       {this.state.error && <div className="form-error">{this.state.error}</div>}
+      <Link to="/login">Already have an account? Login!</Link>
     </Form>
   );
 

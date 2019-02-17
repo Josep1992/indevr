@@ -47,6 +47,9 @@
       padding: 20px;
       width: 100%;
       max-width: 400px;
+      -webkit-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+      box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
 
       .input-wrapper__label {
         font-size: 18px;
@@ -55,6 +58,13 @@
       button {
         width: 100%;
         margin-left: 0;
+        font-size: 24px;
+      }
+
+      a {
+        text-align: center;
+        display: block;
+        margin-top: 10px;
       }
     }
   }
