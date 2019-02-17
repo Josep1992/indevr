@@ -4,7 +4,7 @@ const Inert = require('inert');
 const Bootstrap = require('./bootstrap');
 const JWTAuth = require('hapi-auth-jwt2');
 const objection = require('objection');
-const knex = require('./knex');
+const knex = require('./lib/knex');
 
 // Register Model knex instance
 objection.Model.knex(knex);

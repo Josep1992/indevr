@@ -3,8 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Map } from 'immutable';
 import localstorage from 'store2';
+import { Switch, Route } from 'react-router-dom';
 
 import { verifyToken, logout } from './redux/actions';
+
+import Register from './views/Register';
 
 class App extends Component {
   static propTypes = {
@@ -33,7 +36,11 @@ class App extends Component {
   };
 
   render() {
-    return <div />;
+    return (
+      <Switch>
+        <Route path="/register" component={Register} />
+      </Switch>
+    );
   }
 }
 
