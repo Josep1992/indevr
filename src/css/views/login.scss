@@ -61,10 +61,10 @@
         font-size: 24px;
       }
 
-      a {
-        text-align: center;
-        display: block;
+      .login__form-links {
         margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
       }
     }
   }

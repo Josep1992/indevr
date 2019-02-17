@@ -6,7 +6,7 @@ import LoginForm from './LoginForm';
 
 class Login extends Component {
   static propTypes = {
-    registerUser: PropTypes.func.isRequired,
+    loginUser: PropTypes.func.isRequired,
   };
 
   onLoginSuccess = () => {
