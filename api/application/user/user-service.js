@@ -13,6 +13,7 @@ module.exports = {
   async registerUser(data) {
     return User.query()
       .insertAndFetch(data)
+      .applyFilter('publicUserProfile')
       .catch(err => {
         if (err.constraint) {
           throw Boom.badData('Email already exists');
