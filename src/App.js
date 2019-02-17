@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Map } from 'immutable';
 import localstorage from 'store2';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 
 import { verifyToken, logout } from './redux/actions';
 
 import Register from './views/Register';
+import Login from './views/Login';
 
 class App extends Component {
   static propTypes = {
@@ -39,6 +40,7 @@ class App extends Component {
     return (
       <Switch>
         <Route path="/register" component={Register} />
+        <Route path="/login" component={Login} />
       </Switch>
     );
   }
@@ -57,7 +59,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(App)
+);

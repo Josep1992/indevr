@@ -12,7 +12,7 @@
 /build
 
 # keys
-.crt
+ca-certificate.crt
 
 # misc
 .DS_Store
