@@ -15,6 +15,8 @@ module.exports = {
       password: hashedPassword,
     });
 
+    delete user.password;
+
     user.token = await JWT.sign({ id: user.id }, process.env.JWT_SECRET, {
       expiresIn: '14d',
     });

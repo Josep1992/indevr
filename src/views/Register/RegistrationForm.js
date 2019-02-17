@@ -73,7 +73,7 @@ class Register extends Component {
         }}
         validationSchema={validationSchema}
         onSubmit={(values, actions) => {
-          this.props.registerUser(values).then(action => {
+          this.props.onSubmit(values).then(action => {
             if (action.response.ok) {
               this.setState({ error: '' });
               this.props.onSuccess();

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
 import RegistrationForm from './RegistrationForm';
 
@@ -8,7 +9,9 @@ class Register extends Component {
     registerUser: PropTypes.func.isRequired,
   };
 
-  onRegisterSuccess = () => {};
+  onRegisterSuccess = () => {
+    this.props.history.push('/');
+  };
 
   render() {
     const { registerUser } = this.props;
@@ -35,4 +38,4 @@ class Register extends Component {
   }
 }
 
-export default Register;
+export default withRouter(Register);

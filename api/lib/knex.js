@@ -1,4 +1,4 @@
-const config = require('./config');
+const config = require('../config');
 
 const options = {
   debug: config[config.env].db.debug,
