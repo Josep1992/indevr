@@ -1,72 +1,41 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Formik, Form, Field } from 'formik';
-import * as Yup from 'yup';
+import { withRouter } from 'react-router-dom';
 
-import InputWrapper from '../../common/components/forms/InputWrapper';
-
-const validationSchema = Yup.object().shape({
-  email: Yup.string()
-    .trim()
-    .email()
-    .required('Please enter your email'),
-  password: Yup.string()
-    .trim()
-    .required('Please enter a password'),
-});
+import LoginForm from './LoginForm';
 
 class Login extends Component {
   static propTypes = {
     loginUser: PropTypes.func.isRequired,
-    onSuccess: PropTypes.func,
   };
 
-  state = {
-    error: '',
+  onLoginSuccess = () => {
+    this.props.history.push('/');
   };
-
-  renderForm = ({ touched, errors, isSubmitting }) => (
-    <Form>
-      <InputWrapper label="Email" required validation={touched.email && errors.email}>
-        <Field type="email" name="email" maxLength="64" />
-      </InputWrapper>
-      <InputWrapper label="Password" required validation={touched.password && errors.password}>
-        <Field type="password" name="password" maxLength="64" minLength="6" />
-      </InputWrapper>
-      <div>
-        <button type="submit" className="btn" disabled={isSubmitting}>
-          Login
-        </button>
-      </div>
-      {this.state.error && <div className="form-error">{this.state.error}</div>}
-    </Form>
-  );
 
   render() {
+    const { loginUser } = this.props;
+
     return (
-      <Formik
-        initialValues={{
-          email: '',
-          password: '',
-        }}
-        validationSchema={validationSchema}
-        onSubmit={(values, actions) => {
-          this.props.loginUser(values).then(action => {
-            if (action.response.ok) {
-              this.setState({ error: '' });
-              this.props.onSuccess();
-            } else {
-              if (action.json.message) {
-                this.setState({ error: action.json.message });
-              }
-            }
-            actions.setSubmitting(false);
-          });
-        }}
-        render={this.renderForm}
-      />
+      <div className="login">
+        <div className="container login__left">
+          <img
+            src="https://s3-us-west-1.amazonaws.com/indevr/assets/indevr-logo.png"
+            alt="logo"
+            className="img-responsive"
+          />
+          <p>
+            The only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't
+            settle.
+            <span>- Steve Jobs</span>
+          </p>
+        </div>
+        <div className="container login__right">
+          <LoginForm onSubmit={loginUser} onSuccess={this.onLoginSuccess} />
+        </div>
+      </div>
     );
   }
 }
 
-export default Login;
+export default withRouter(Login);
