@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { Map } from 'immutable';
 
 class Header extends Component {
@@ -10,7 +10,7 @@ class Header extends Component {
   };
 
   render() {
-    const { user, isLoggedIn } = this.props;
+    const { user, isLoggedIn, history } = this.props;
 
     if (!isLoggedIn) {
       return null;
@@ -19,7 +19,9 @@ class Header extends Component {
     return (
       <header className="header">
         <div className="header__brand">
-          <img src="https://s3-us-west-1.amazonaws.com/indevr/assets/indevr-logo.png" alt="logo" />
+          <Link to="/">
+            <img src="https://s3-us-west-1.amazonaws.com/indevr/assets/indevr-logo.png" alt="logo" />
+          </Link>
         </div>
         <div className="header__links">
           <NavLink to="/companies">Companies</NavLink>
