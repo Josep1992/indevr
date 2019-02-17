@@ -18,6 +18,10 @@ const user = (state = null, action) => {
       localstorage.set('token', action.json.token);
       return fromJS(action.json);
 
+    case `${VERIFY_TOKEN}_FAILURE`:
+      localstorage.clear();
+      return null;
+
     case LOGOUT_USER:
       localstorage.clear();
       return null;

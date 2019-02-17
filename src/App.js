@@ -23,11 +23,7 @@ class App extends Component {
     if (!user) {
       const token = localstorage.get('token');
       if (token) {
-        verifyToken(token).then(action => {
-          if (action.response.ok) {
-            this.setState({ view: 'success' });
-          }
-        });
+        verifyToken(token);
       }
     }
   }
