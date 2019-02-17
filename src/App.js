@@ -7,6 +7,7 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 
 import { verifyToken, logout } from './redux/actions';
 
+import PrimaryLayout from './Layouts/PrimaryLayout';
 import Register from './views/Register';
 import Login from './views/Login';
 
@@ -22,11 +23,7 @@ class App extends Component {
     if (!user) {
       const token = localstorage.get('token');
       if (token) {
-        verifyToken(token).then(action => {
-          if (action.response.ok) {
-            this.setState({ view: 'success' });
-          }
-        });
+        verifyToken(token);
       }
     }
   }
@@ -38,10 +35,12 @@ class App extends Component {
 
   render() {
     return (
-      <Switch>
-        <Route path="/register" component={Register} />
-        <Route path="/login" component={Login} />
-      </Switch>
+      <PrimaryLayout>
+        <Switch>
+          <Route path="/register" component={Register} />
+          <Route path="/login" component={Login} />
+        </Switch>
+      </PrimaryLayout>
     );
   }
 }

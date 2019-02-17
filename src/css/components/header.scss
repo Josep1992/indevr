@@ -1,0 +1,27 @@
+.header {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  -webkit-box-shadow: 0px 5px 5px 0px rgba(91, 47, 189, 0.75);
+  -moz-box-shadow: 0px 5px 5px 0px rgba(91, 47, 189, 0.75);
+  box-shadow: 0px 5px 5px 0px rgba(91, 47, 189, 0.75);
+
+  .header__brand {
+    width: 150px;
+    margin-left: 20px;
+    img {
+      max-height: 50px;
+    }
+  }
+
+  .header__links {
+    a {
+      margin: 20px;
+      font-size: 28px;
+      color: #333;
+      font-family: 'Teko';
+    }
+  }
+}
