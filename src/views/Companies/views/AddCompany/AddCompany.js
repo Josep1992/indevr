@@ -10,7 +10,11 @@ class AddCompany extends Component {
 
   render() {
     const { postCompany } = this.props;
-    return <CompanyForm onSubmit={postCompany} onSuccess={() => {}} />;
+    return (
+      <div className="container add-company">
+        <CompanyForm onSubmit={postCompany} onSuccess={() => {}} />
+      </div>
+    );
   }
 }
 
