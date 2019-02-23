@@ -86,7 +86,9 @@ class AddCompany extends Component {
               <Field name="state" component="select">
                 <option value="">State...</option>
                 {stateOptions.map(state => (
-                  <option value={state.value}>{state.label}</option>
+                  <option key={state.value} value={state.value}>
+                    {state.label}
+                  </option>
                 ))}
               </Field>
             </InputWrapper>
@@ -110,10 +112,10 @@ class AddCompany extends Component {
       </div>
       <div>
         <div className="company-form__form-section__right">
-          <InputWrapper label="Overview" required validation={touched.description && errors.description}>
+          <InputWrapper label="Overview" markdown required validation={touched.description && errors.description}>
             <Field name="description" component="textarea" />
           </InputWrapper>
-          <InputWrapper label="My Notes" required validation={touched.notes && errors.notes}>
+          <InputWrapper label="My Notes" markdown required validation={touched.notes && errors.notes}>
             <Field name="notes" component="textarea" />
           </InputWrapper>
         </div>

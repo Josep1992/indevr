@@ -10,7 +10,7 @@ class Header extends Component {
   };
 
   render() {
-    const { user, isLoggedIn, history } = this.props;
+    const { user, isLoggedIn } = this.props;
 
     if (!isLoggedIn) {
       return null;

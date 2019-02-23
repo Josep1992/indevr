@@ -5,7 +5,7 @@ import PrimaryLayout from './PrimaryLayout';
 
 const mapStateToProps = state => ({
   isLoggedIn: !!localstorage.get('token'),
-  user: state.user,
+  user: state.user.get('data'),
 });
 
 export default connect(mapStateToProps)(PrimaryLayout);
