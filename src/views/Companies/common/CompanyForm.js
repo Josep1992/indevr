@@ -12,10 +12,10 @@ const validationSchema = Yup.object().shape({
     .required('Please the company name'),
   street: Yup.string()
     .trim()
-    .max(64),
+    .max(255),
   street2: Yup.string()
     .trim()
-    .max(64),
+    .max(255),
   city: Yup.string()
     .trim()
     .max(64),
@@ -27,7 +27,7 @@ const validationSchema = Yup.object().shape({
     .max(255),
   website: Yup.string()
     .url()
-    .max(64),
+    .max(255),
   linkedin: Yup.string()
     .trim()
     .max(64),
@@ -42,16 +42,54 @@ const validationSchema = Yup.object().shape({
 });
 
 class AddCompany extends Component {
-  static propTypes = {};
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+    onSuccess: PropTypes.func,
+  };
 
   renderForm = ({ touched, errors, isSubmitting }) => (
     <Form>
       <div>
-        <InputWrapper label="Company Name" required validation={touched.email && errors.email}>
+        <InputWrapper label="Company Name" required validation={touched.company_name && errors.company_name}>
           <Field name="company_name" maxLength="255" />
+        </InputWrapper>
+        <InputWrapper label="Website" required validation={touched.website && errors.website}>
+          <Field name="website" maxLength="255" />
+        </InputWrapper>
+        <InputWrapper
+          label="Address"
+          required
+          validation={(touched.street && errors.street) || (touched.street2 && errors.street2)}
+        >
+          <Field name="street" maxLength="255" />
+          <Field name="street2" maxLength="255" />
+        </InputWrapper>
+        <InputWrapper label="City" required validation={touched.city && errors.city}>
+          <Field name="city" maxLength="64" />
+        </InputWrapper>
+        <InputWrapper label="State" required validation={touched.state && errors.state}>
+          <Field name="state" maxLength="2" />
+        </InputWrapper>
+        <InputWrapper label="Cross Strees" required validation={touched.cross_streets && errors.cross_streets}>
+          <Field name="cross_streets" maxLength="255" />
+        </InputWrapper>
+        <InputWrapper label="LinkedIn" required validation={touched.linkedin && errors.linkedin}>
+          <Field name="linkedin" maxLength="255" />
+        </InputWrapper>
+        <InputWrapper label="Twitter" required validation={touched.twitter && errors.twitter}>
+          <Field name="twitter" maxLength="255" />
+        </InputWrapper>
+        <InputWrapper label="Facebook" required validation={touched.facebook && errors.facebook}>
+          <Field name="facebook" maxLength="255" />
         </InputWrapper>
       </div>
       <div>
+        <InputWrapper label="Overview" required validation={touched.description && errors.description}>
+          <Field name="description" component="textarea" />
+        </InputWrapper>
+        <InputWrapper label="My Notes" required validation={touched.notes && errors.notes}>
+          <Field name="notes" component="textarea" />
+        </InputWrapper>
         <div>
           <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
             Login
@@ -62,15 +100,30 @@ class AddCompany extends Component {
   );
 
   render() {
+    const { onSubmit, onSuccess } = this.props;
     return (
       <Formik
         initialValues={{
-          email: '',
-          password: '',
+          company_name: '',
+          street: '',
+          street2: '',
+          city: '',
+          state: '',
+          cross_streets: '',
+          website: '',
+          linkedin: '',
+          twitter: '',
+          facebook: '',
+          description: '',
+          notes: '',
         }}
         validationSchema={validationSchema}
         onSubmit={(values, actions) => {
-          this.props.onSubmit(values).then(action => {
+          onSubmit(values).then(action => {
+            console.log(action);
+            if (action.response.ok) {
+              onSuccess();
+            }
             actions.setSubmitting(false);
           });
         }}

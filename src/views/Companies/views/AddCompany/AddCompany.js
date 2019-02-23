@@ -7,7 +7,7 @@ class AddCompany extends Component {
   static propTypes = {};
 
   render() {
-    return <CompanyForm />;
+    return <CompanyForm onSubmit={() => {}} onSuccess={() => {}} />;
   }
 }
 
