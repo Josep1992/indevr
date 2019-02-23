@@ -92,7 +92,7 @@ class AddCompany extends Component {
         </InputWrapper>
         <div>
           <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
-            Login
+            Submit
           </button>
         </div>
       </div>
@@ -120,7 +120,6 @@ class AddCompany extends Component {
         validationSchema={validationSchema}
         onSubmit={(values, actions) => {
           onSubmit(values).then(action => {
-            console.log(action);
             if (action.response.ok) {
               onSuccess();
             }

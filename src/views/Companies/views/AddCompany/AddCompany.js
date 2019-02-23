@@ -4,10 +4,13 @@ import PropTypes from 'prop-types';
 import CompanyForm from '../../common/CompanyForm';
 
 class AddCompany extends Component {
-  static propTypes = {};
+  static propTypes = {
+    postCompany: PropTypes.func.isRequired,
+  };
 
   render() {
-    return <CompanyForm onSubmit={() => {}} onSuccess={() => {}} />;
+    const { postCompany } = this.props;
+    return <CompanyForm onSubmit={postCompany} onSuccess={() => {}} />;
   }
 }
 

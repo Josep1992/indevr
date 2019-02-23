@@ -1,14 +1,16 @@
 import { connect } from 'react-redux';
 import AddCompany from './AddCompany';
 
-// import {} from './redux/actions';
+import { postCompany } from '../../redux/actions';
 
 const mapStateToProps = state => {
   return {};
 };
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    postCompany: values => dispatch(postCompany(values)),
+  };
 };
 
 export default connect(

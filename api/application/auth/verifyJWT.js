@@ -9,7 +9,6 @@ const validate = async (decoded, request) => {
     }
 
     const isVerified = !!user;
-
     const credentials = {
       ...decoded,
       effectiveId: user.id,
