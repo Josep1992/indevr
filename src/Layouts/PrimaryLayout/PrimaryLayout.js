@@ -13,10 +13,8 @@ class PrimaryLayout extends Component {
     const { children, isLoggedIn, user } = this.props;
     return (
       <div>
-        <div>
-          <Header user={user} isLoggedIn={isLoggedIn} />
-          <div>{children}</div>
-        </div>
+        <Header user={user} isLoggedIn={isLoggedIn} />
+        <div>{children}</div>
       </div>
     );
   }

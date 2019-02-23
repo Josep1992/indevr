@@ -10,6 +10,7 @@ import { verifyToken, logout } from './redux/actions';
 import PrimaryLayout from './Layouts/PrimaryLayout';
 import Register from './views/Register';
 import Login from './views/Login';
+import AddCompany from './views/Companies/views/AddCompany';
 
 class App extends Component {
   static propTypes = {
@@ -30,7 +31,6 @@ class App extends Component {
 
   logout = () => {
     this.props.logout();
-    this.setState({ view: 'login' });
   };
 
   render() {
@@ -39,6 +39,7 @@ class App extends Component {
         <Switch>
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
+          <Route path="/company/add" component={AddCompany} />
         </Switch>
       </PrimaryLayout>
     );
