@@ -2,6 +2,8 @@ import { combineReducers } from 'redux';
 import { fromJS, Map } from 'immutable';
 import localstorage from 'store2';
 
+import company from '../views/Companies/redux/reducers';
+
 import { REGISTER_USER, LOGIN_USER, VERIFY_TOKEN, LOGOUT_USER, CONTINUE_WITHOUT_USER } from './actions';
 
 const user = (state = Map({ data: null, loading: true }), action) => {
@@ -47,4 +49,5 @@ const user = (state = Map({ data: null, loading: true }), action) => {
 
 export default combineReducers({
   user,
+  company,
 });

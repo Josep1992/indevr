@@ -9,12 +9,8 @@ class Login extends Component {
     loginUser: PropTypes.func.isRequired,
   };
 
-  onLoginSuccess = () => {
-    this.props.history.push('/');
-  };
-
   render() {
-    const { loginUser } = this.props;
+    const { loginUser, history } = this.props;
 
     return (
       <div className="login">
@@ -31,7 +27,7 @@ class Login extends Component {
           </p>
         </div>
         <div className="container login__right">
-          <LoginForm onSubmit={loginUser} onSuccess={this.onLoginSuccess} />
+          <LoginForm onSubmit={loginUser} onSuccess={() => history.push('/')} />
         </div>
       </div>
     );

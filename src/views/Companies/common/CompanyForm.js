@@ -150,7 +150,7 @@ class AddCompany extends Component {
         onSubmit={(values, actions) => {
           onSubmit(values).then(action => {
             if (action.response.ok) {
-              onSuccess();
+              onSuccess(action.json);
             }
             actions.setSubmitting(false);
           });

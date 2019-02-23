@@ -4,7 +4,9 @@ import AddCompany from './AddCompany';
 import { postCompany } from '../../redux/actions';
 
 const mapStateToProps = state => {
-  return {};
+  return {
+    loading: state.company.loading,
+  };
 };
 
 const mapDispatchToProps = dispatch => {

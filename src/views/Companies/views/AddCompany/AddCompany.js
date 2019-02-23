@@ -8,11 +8,20 @@ class AddCompany extends Component {
     postCompany: PropTypes.func.isRequired,
   };
 
+  onSuccess = company => {
+    this.props.history.push(`/company/${company.id}`);
+  };
+
   render() {
-    const { postCompany } = this.props;
+    const { postCompany, loading } = this.props;
+
+    if (loading) {
+      return 'Loading...';
+    }
+
     return (
       <div className="container add-company">
-        <CompanyForm onSubmit={postCompany} onSuccess={() => {}} />
+        <CompanyForm onSubmit={postCompany} onSuccess={this.onSuccess} />
       </div>
     );
   }
