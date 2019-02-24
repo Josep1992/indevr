@@ -117,6 +117,21 @@ class CompanyList extends Component {
     if (!companies.get('total')) {
       return (
         <div className="container">
+          <div className="company-list__header">
+            <div className="company-list__header-text">
+              <h1>Companies</h1>
+            </div>
+            <div className="company-list__add-button-wrapper">
+              <button className="btn btn-primary" onClick={() => history.push('/company/add')}>
+                <Icon icon="Plus" /> New Company
+              </button>
+            </div>
+          </div>
+          <p className="company-list__helper-text">
+            Add companies you're interested in here. Companies can have multiple jobs associated with them, but don't
+            have to have any. Use this list to narrow down the places you'd like to work by researching the company,
+            making connections, and tracking available jobs.
+          </p>
           <NoContentPlaceholder
             icon="Building"
             title="No Companies Found"

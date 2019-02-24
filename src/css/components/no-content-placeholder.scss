@@ -5,10 +5,10 @@
   flex-wrap: wrap;
   padding: 50px;
   background-color: #ddd;
-  color: #aaa;
+  color: var(--gray);
 
   .icon {
-    fill: #aaa;
+    fill: var(--gray);
   }
 
   .no-content__content {
