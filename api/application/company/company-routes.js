@@ -16,7 +16,8 @@ module.exports = {
           },
           validate: {
             query: {
-              page: Joi.number(),
+              page: Joi.string().regex(/^\d+$/),
+              pageSize: Joi.string().regex(/^\d+$/),
             },
           },
         },

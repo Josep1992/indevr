@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import { Map } from 'immutable';
 import ReactTable from 'react-table';
 import moment from 'moment';
+import Pagination from 'rc-pagination';
+import locale from 'rc-pagination/lib/locale/en_US';
+
+const PAGE_SIZE = 20;
 
 class CompanyList extends Component {
   static propTypes = {
@@ -10,14 +14,39 @@ class CompanyList extends Component {
     companies: PropTypes.instanceOf(Map),
   };
 
+  state = {
+    page: 0,
+  };
+
   componentDidMount() {
     const { getCompanies } = this.props;
-    getCompanies();
+    const { page } = this.state;
+    getCompanies(page, PAGE_SIZE);
   }
 
-  renderTable = () => {
+  onPageChange = page => {
+    this.setState({ page: page - 1 });
+    this.props.getCompanies(page - 1);
+  };
+
+  renderPagination = () => {
     const { companies } = this.props;
-    const data = companies.map(company => ({
+
+    return (
+      <Pagination
+        total={parseInt(companies.get('total'), 10)}
+        onChange={this.onPageChange}
+        current={this.state.page + 1}
+        pageSize={PAGE_SIZE}
+        locale={locale}
+      />
+    );
+  };
+
+  renderTable = () => {
+    const { companies, history } = this.props;
+    const data = companies.get('results').map(company => ({
+      id: company.get('id'),
       company: (
         <div>
           <img src={company.get('logo')} alt="company logo" className="img-responsive" /> {company.get('company_name')}
@@ -31,7 +60,7 @@ class CompanyList extends Component {
       contacts: 0,
       apps: 0,
       saved: 0,
-      lastActivity: '',
+      lastActivity: moment().format('MM/DD/YYYY'),
     }));
 
     return (
@@ -39,6 +68,7 @@ class CompanyList extends Component {
         resizable={false}
         ref="chatTable"
         data={data}
+        noDataText=""
         columns={[
           {
             Header: 'Company',
@@ -66,6 +96,11 @@ class CompanyList extends Component {
           },
         ]}
         showPagination={false}
+        getTdProps={(e, row, column) => ({
+          onClick: ev => {
+            history.push(`/company/${row.original.id}`);
+          },
+        })}
       />
     );
   };
@@ -80,8 +115,8 @@ class CompanyList extends Component {
     return (
       <div className="container">
         Companies
-        {/* {companies.map(company => this.renderCompany(company))} */}
         {this.renderTable()}
+        {companies.get('total') > PAGE_SIZE && this.renderPagination()}
       </div>
     );
   }

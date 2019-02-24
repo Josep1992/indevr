@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { fromJS, Map } from 'immutable';
+import { fromJS, Map, List } from 'immutable';
 
 import { POST_COMPANY, GET_COMPANIES } from './actions';
 
@@ -30,7 +30,7 @@ const currentCompany = (state = Map(), action) => {
   }
 };
 
-const companyList = (state = Map(), action) => {
+const companyList = (state = Map({ total: null, results: List() }), action) => {
   switch (action.type) {
     case `${GET_COMPANIES}_SUCCESS`:
       return fromJS(action.json);

@@ -8,7 +8,7 @@ export const postCompany = payload => ({
   promise: client.post('/companies', payload),
 });
 
-export const getCompanies = () => ({
+export const getCompanies = (page = 0, pageSize = 20) => ({
   type: GET_COMPANIES,
-  promise: client.get('/companies'),
+  promise: client.get(`/companies?page=${page}&pageSize=${pageSize}`),
 });

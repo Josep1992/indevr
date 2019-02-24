@@ -25,6 +25,7 @@
     "objection": "^1.4.0",
     "pg": "^7.8.0",
     "prop-types": "^15.6.2",
+    "rc-pagination": "^1.17.8",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-dropzone": "^9.0.0",

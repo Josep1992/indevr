@@ -2,7 +2,11 @@ const service = require('../company/company-service');
 
 module.exports = {
   async getCompaniesHandler(request) {
-    return service.getCompaniesByUser(request.auth.credentials.id);
+    const {
+      auth: { credentials },
+      query: { page, pageSize },
+    } = request;
+    return service.getCompaniesByUser(credentials.id, page, pageSize);
   },
 
   async postCompanyHandler(request) {
