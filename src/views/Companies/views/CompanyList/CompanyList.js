@@ -6,6 +6,9 @@ import moment from 'moment';
 import Pagination from 'rc-pagination';
 import locale from 'rc-pagination/lib/locale/en_US';
 
+import NoContentPlaceholder from '../../../../common/components/NoContentPlaceholder';
+import Icon from '../../../../common/components/Icon/Icon';
+
 const PAGE_SIZE = 20;
 
 class CompanyList extends Component {
@@ -106,10 +109,32 @@ class CompanyList extends Component {
   };
 
   render() {
-    const { loading, companies } = this.props;
-
+    const { loading, companies, history } = this.props;
     if (loading) {
       return 'Loading...';
+    }
+
+    if (!companies.get('total')) {
+      return (
+        <div className="container">
+          <NoContentPlaceholder
+            icon="Building"
+            title="No Companies Found"
+            body={
+              <div>
+                Click{' '}
+                <button
+                  className="btn btn-primary company-list__no-content-button"
+                  onClick={() => history.push('/company/add')}
+                >
+                  <Icon icon="Plus" /> New Company
+                </button>{' '}
+                to get started.
+              </div>
+            }
+          />
+        </div>
+      );
     }
 
     return (

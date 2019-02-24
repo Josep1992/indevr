@@ -3,7 +3,7 @@ import React from 'react';
 const Markdown = () => {
   /* eslint-disable max-len */
   return (
-    <svg className="markdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" height="100">
+    <svg className="icon markdown-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" height="100">
       <title>Markdown</title>
       <path
         d="M593.8,59.1H46.2C20.7,59.1,0,79.8,0,105.2v301.5c0,25.5,20.7,46.2,46.2,46.2h547.7c25.5,0,46.2-20.7,46.1-46.1V105.2

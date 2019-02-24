@@ -99,3 +99,15 @@
     }
   }
 }
+
+.company-list__no-content-button {
+  height: 30px;
+  padding: 0 10px;
+
+  .icon {
+    height: 15px;
+    align-self: center;
+    fill: #fff;
+    margin-right: 2px;
+  }
+}

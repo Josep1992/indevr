@@ -3,12 +3,7 @@ import React from 'react';
 const Loading = () => {
   /* eslint-disable max-len */
   return (
-    <svg
-      className="loading-icon"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 127.92 128"
-      height="100"
-    >
+    <svg className="icon loading-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.92 128" height="100">
       <title>loading</title>
       <g id="StZm6I.tif">
         <path
