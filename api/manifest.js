@@ -12,6 +12,7 @@ objection.Model.knex(knex);
 // Route Plugins
 const authRoutes = require('./application/auth/auth-routes');
 const userRoutes = require('./application/user/user-routes');
+const companyRoutes = require('./application/company/company-routes');
 
 module.exports = {
   server: {
@@ -41,6 +42,6 @@ module.exports = {
     port: 9000,
   },
   register: {
-    plugins: [JWTAuth, Inert, Bootstrap, authRoutes, userRoutes],
+    plugins: [JWTAuth, Inert, Bootstrap, authRoutes, userRoutes, companyRoutes],
   },
 };

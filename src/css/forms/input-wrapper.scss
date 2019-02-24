@@ -3,7 +3,7 @@
 }
 
 .input-wrapper__label {
-  font-size: 14px;
+  font-size: 18px;
   font-weight: bold;
 }
 
@@ -26,4 +26,10 @@
 
 .input-scaffold__helper-text {
   font-size: 12px;
+}
+
+.input-wrapper__icon .markdown-icon {
+  fill: var(--primary);
+  height: 25px;
+  float: right;
 }

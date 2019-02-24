@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import Icon from '../Icon/Icon';
 
 const InputWrapper = props => {
   const wrapperClasses = classNames('input-wrapper', props.className);
@@ -12,12 +13,15 @@ const InputWrapper = props => {
   return (
     <div className={wrapperClasses}>
       <label className={labelClasses}>
-        {props.label ? <span className="input-wrapper__label">{props.label}</span> : null}
+        {props.label && <span className="input-wrapper__label">{props.label}</span>}
+        {props.markdown && (
+          <span className="input-wrapper__icon">
+            <Icon icon="Markdown" />
+          </span>
+        )}
       </label>
       <div className="input-scaffold__children">{props.children}</div>
-      {props.helperText ? (
-        <div className="input-scaffold__helper-text">{props.helperText}</div>
-      ) : null}
+      {props.helperText ? <div className="input-scaffold__helper-text">{props.helperText}</div> : null}
       {props.validation ? <div className="input-validation">{props.validation}</div> : null}
     </div>
   );
@@ -30,6 +34,7 @@ InputWrapper.propTypes = {
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   validation: PropTypes.any,
   helperText: PropTypes.string,
+  markdown: PropTypes.bool,
 };
 
 InputWrapper.defaultProps = {

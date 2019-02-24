@@ -1,0 +1,101 @@
+.add-company {
+  display: flex;
+  justify-content: center;
+}
+
+.company-form__form {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1000px;
+  > div {
+    width: 50%;
+    min-width: 360px;
+    padding: 20px;
+  }
+
+  .company-form__form-logo {
+    height: 100px;
+  }
+
+  h1,
+  h3 {
+    margin-bottom: 0;
+    color: var(--primary);
+  }
+
+  .company-form__form-section {
+    margin-bottom: 20px;
+  }
+
+  .company-form__form-section__right {
+    margin-top: 82px;
+  }
+
+  .company-form__form-double {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: -15px;
+  }
+
+  .company-form__form-city {
+    width: calc(100% - 190px);
+    margin-right: 10px;
+  }
+
+  .company-form__form-state {
+    width: 180px;
+  }
+
+  textarea {
+    height: 387px;
+  }
+
+  .dropzone {
+    display: flex;
+    height: 100px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .company-form__form__image-upload {
+    background-color: #ddd;
+    border: 3px dashed var(--primary);
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  @media (max-width: 967px) {
+    > div {
+      width: 100%;
+    }
+
+    .company-form__form-section__right {
+      margin-top: 0;
+    }
+  }
+  @media (max-width: 600px) {
+    .company-form__form-double {
+      display: block;
+    }
+
+    .company-form__form-city {
+      width: 100%;
+      margin-right: 0;
+    }
+
+    .company-form__form-state {
+      width: 100%;
+    }
+  }
+}
