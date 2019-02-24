@@ -5,6 +5,13 @@ const s3 = require('../../lib/aws');
 const config = require('../../config');
 
 module.exports = {
+  async getCompaniesByUser(user_id, page, pageSize) {
+    return Company.query()
+      .orderBy('company_name', 'ASC')
+      .page(page, pageSize)
+      .where({ user_id });
+  },
+
   async postCompany(payload, user_id) {
     const imagePromise = new Promise((resolve, reject) => {
       if (payload.logo) {

@@ -1,15 +1,18 @@
 import { combineReducers } from 'redux';
-import { fromJS, Map } from 'immutable';
+import { fromJS, Map, List } from 'immutable';
 
-import { POST_COMPANY } from './actions';
+import { POST_COMPANY, GET_COMPANIES } from './actions';
 
 const loading = (state = false, action) => {
   switch (action.type) {
     case `${POST_COMPANY}_REQUEST`:
+    case `${GET_COMPANIES}_REQUEST`:
       return true;
 
     case `${POST_COMPANY}_SUCCESS`:
     case `${POST_COMPANY}_FAILURE`:
+    case `${GET_COMPANIES}_SUCCESS`:
+    case `${GET_COMPANIES}_FAILURE`:
       return false;
 
     default:
@@ -27,7 +30,18 @@ const currentCompany = (state = Map(), action) => {
   }
 };
 
+const companyList = (state = Map({ total: null, results: List() }), action) => {
+  switch (action.type) {
+    case `${GET_COMPANIES}_SUCCESS`:
+      return fromJS(action.json);
+
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   loading,
   currentCompany,
+  companyList,
 });

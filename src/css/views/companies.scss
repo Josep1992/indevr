@@ -99,3 +99,49 @@
     }
   }
 }
+
+.company-list__no-content-button {
+  height: 30px;
+  padding: 0 10px;
+
+  .icon {
+    height: 15px;
+    align-self: center;
+    fill: #fff;
+    margin-right: 2px;
+  }
+}
+
+.company-list__header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.company-list__helper-text {
+  color: var(--gray);
+  margin-top: 0;
+}
+
+.company-list__add-button-wrapper {
+  width: 175px;
+
+  button {
+    float: right;
+    font-size: 16px;
+    width: 100%;
+  }
+
+  .icon {
+    height: 15px;
+    align-self: center;
+    fill: #fff;
+    margin-right: 2px;
+  }
+}
+
+.company-table__logo-cell {
+  display: flex;
+  align-items: center;
+}

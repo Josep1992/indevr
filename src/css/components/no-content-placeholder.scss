@@ -1,0 +1,24 @@
+.no-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 50px;
+  background-color: #ddd;
+  color: var(--gray);
+
+  .icon {
+    fill: var(--gray);
+  }
+
+  .no-content__content {
+    text-align: center;
+    min-width: 500px;
+    h1 {
+      margin: 0;
+    }
+  }
+
+  .no-content__body {
+  }
+}

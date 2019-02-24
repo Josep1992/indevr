@@ -12,6 +12,7 @@ import PrimaryLayout from './Layouts/PrimaryLayout';
 
 import Register from './views/Register';
 import Login from './views/Login';
+import CompanyList from './views/Companies/views/CompanyList';
 import AddCompany from './views/Companies/views/AddCompany';
 
 class App extends Component {
@@ -59,6 +60,7 @@ class App extends Component {
     return (
       <PrimaryLayout>
         <Switch>
+          <Route path="/companies" component={CompanyList} />
           <Route path="/company/add" component={AddCompany} />
         </Switch>
       </PrimaryLayout>
