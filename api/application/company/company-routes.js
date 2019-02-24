@@ -7,6 +7,21 @@ module.exports = {
   register: async (server, options) => {
     server.route([
       {
+        method: 'GET',
+        path: '/companies',
+        handler: controller.getCompaniesHandler,
+        config: {
+          auth: {
+            strategies: ['jwt'],
+          },
+          validate: {
+            query: {
+              page: Joi.number(),
+            },
+          },
+        },
+      },
+      {
         method: 'POST',
         path: '/companies',
         handler: controller.postCompanyHandler,
