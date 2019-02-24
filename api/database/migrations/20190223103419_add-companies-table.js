@@ -14,6 +14,7 @@ exports.up = async knex => {
     table.string('facebook', 64);
     table.text('description');
     table.text('notes');
+    table.string('logo');
     table.timestamp('updated_at');
     table.timestamp('created_at').notNullable();
   });

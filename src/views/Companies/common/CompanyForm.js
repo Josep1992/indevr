@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import classNames from 'classnames';
 import stateOptions from '../../../common/lib/state-options';
 
 import InputWrapper from '../../../common/components/forms/InputWrapper';
+import ImageUploader from '../../../common/components/forms/ImageUploader';
 
 const validationSchema = Yup.object().shape({
   company_name: Yup.string()
@@ -48,7 +50,7 @@ class AddCompany extends Component {
     onSuccess: PropTypes.func,
   };
 
-  renderForm = ({ touched, errors, isSubmitting }) => (
+  renderForm = ({ values, touched, errors, isSubmitting, setFieldValue, setFieldError }) => (
     <Form className="company-form__form">
       <div>
         <div className="company-form__form-section">
@@ -58,6 +60,22 @@ class AddCompany extends Component {
           </InputWrapper>
           <InputWrapper label="Website" required validation={touched.website && errors.website}>
             <Field name="website" maxLength="255" />
+          </InputWrapper>
+          <InputWrapper label="Company Logo" required validation={errors.logo}>
+            <ImageUploader
+              imageHandler={value => setFieldValue('logo', value)}
+              onError={error => setFieldError('logo', error)}
+              className={classNames({
+                'company-form__form__image-upload': !values.logo,
+              })}
+              innerText={
+                values.logo ? (
+                  <img src={values.logo} className="company-form__form-logo img-responsive" alt="company logo" />
+                ) : (
+                  'Drop logo image here, or click to select file'
+                )
+              }
+            />
           </InputWrapper>
         </div>
         <div className="company-form__form-section">

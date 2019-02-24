@@ -48,6 +48,7 @@ module.exports = {
                 .allow(''),
               description: Joi.string().allow(''),
               notes: Joi.string().allow(''),
+              logo: Joi.string().allow(''),
             },
           },
         },

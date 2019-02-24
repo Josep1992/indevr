@@ -8,12 +8,8 @@ class AddCompany extends Component {
     postCompany: PropTypes.func.isRequired,
   };
 
-  onSuccess = company => {
-    this.props.history.push(`/company/${company.id}`);
-  };
-
   render() {
-    const { postCompany, loading } = this.props;
+    const { postCompany, loading, history } = this.props;
 
     if (loading) {
       return 'Loading...';
@@ -21,7 +17,7 @@ class AddCompany extends Component {
 
     return (
       <div className="container add-company">
-        <CompanyForm onSubmit={postCompany} onSuccess={this.onSuccess} />
+        <CompanyForm onSubmit={postCompany} onSuccess={company => history.push(`/company/${company.id}`)} />
       </div>
     );
   }
