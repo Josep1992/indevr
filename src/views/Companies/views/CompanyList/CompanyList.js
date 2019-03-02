@@ -52,7 +52,8 @@ class CompanyList extends Component {
       id: company.get('id'),
       company: (
         <div className="company-table__logo-cell">
-          <img src={company.get('logo')} alt="company logo" className="img-responsive" /> {company.get('company_name')}
+          {company.get('logo') && <img src={company.get('logo')} alt="company logo" className="img-responsive" />}{' '}
+          {company.get('company_name')}
         </div>
       ),
       location: (

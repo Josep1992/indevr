@@ -9,6 +9,10 @@ module.exports = {
     return service.getCompaniesByUser(credentials.id, page, pageSize);
   },
 
+  async getCompanyHandler(request) {
+    return request.params.company;
+  },
+
   async postCompanyHandler(request) {
     const { payload, auth } = request;
     return service.postCompany(payload, auth.credentials.id);

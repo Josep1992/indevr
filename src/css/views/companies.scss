@@ -145,3 +145,23 @@
   display: flex;
   align-items: center;
 }
+
+.company {
+  .company__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .company__header-main {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 36px;
+
+    img {
+      max-height: 100px;
+      max-width: 100px;
+      margin-right: 20px;
+    }
+  }
+}

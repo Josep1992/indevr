@@ -15,6 +15,19 @@ class Company extends Model {
     return 'Invalid company';
   }
 
+  static get relationMappings() {
+    return {
+      user: {
+        relation: Model.BelongsToOneRelation,
+        modelClass: require('../user/User'),
+        join: {
+          from: 'companies.user_id',
+          to: 'users.id',
+        },
+      },
+    };
+  }
+
   $beforeUpdate() {
     this.updated_at = new Date().toISOString();
   }

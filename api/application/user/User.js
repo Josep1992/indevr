@@ -22,6 +22,19 @@ class User extends Model {
     };
   }
 
+  static get relationMappings() {
+    return {
+      companies: {
+        relation: Model.HasManyRelation,
+        modelClass: require('../company/Company'),
+        join: {
+          from: 'users.id',
+          to: 'companies.user_id',
+        },
+      },
+    };
+  }
+
   $beforeInsert() {
     this.id = uuid.v4();
     this.created_at = new Date().toISOString();

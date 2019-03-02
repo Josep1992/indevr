@@ -1,6 +1,11 @@
 const Joi = require('joi');
+const {
+  asyncValidation,
+  objection: { rowExists, rowExistsWhere },
+} = require('@synapsestudios/hapi-async-validation');
 
 const controller = require('./Company-controller');
+const Company = require('./Company');
 
 module.exports = {
   name: 'Company Routes',
@@ -14,11 +19,28 @@ module.exports = {
           auth: {
             strategies: ['jwt'],
           },
+        },
+      },
+      {
+        method: 'GET',
+        path: '/companies/{company}',
+        handler: controller.getCompanyHandler,
+        config: {
+          auth: {
+            strategies: ['jwt'],
+            scope: ['company-{params.company}'],
+          },
           validate: {
-            query: {
-              page: Joi.string().regex(/^\d+$/),
-              pageSize: Joi.string().regex(/^\d+$/),
-            },
+            params: asyncValidation(
+              {
+                company: Joi.string()
+                  .uuid()
+                  .required(),
+              },
+              {
+                company: rowExists(Company, 'id', Company.notFoundMessage),
+              }
+            ),
           },
         },
       },

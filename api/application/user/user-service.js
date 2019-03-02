@@ -2,8 +2,10 @@ const Boom = require('boom');
 const User = require('./User');
 
 module.exports = {
-  async findById(id) {
-    return User.query().findById(id);
+  async findById(id, relationships = {}) {
+    return User.query()
+      .findById(id)
+      .eager(relationships);
   },
 
   async findByEmail(email) {

@@ -6,9 +6,9 @@
   font-size: 20px;
 }
 
-// .ReactTable .rt-th {
-//   text-align: left;
-// }
+.ReactTable .rt-tr {
+  cursor: pointer;
+}
 
 .ReactTable .rt-thead .rt-th,
 .ReactTable .rt-thead .rt-td {
